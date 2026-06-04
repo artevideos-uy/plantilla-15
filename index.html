@@ -5,39 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Invitación Premium</title>
 
-<!-- 🔤 FUENTES (puedes cambiar aquí o agregar más) -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-/* ==================================================
-   💼 CONFIGURACIÓN GLOBAL (NO TOCAR AQUÍ ABAJO)
-   ================================================== */
-:root {
-  --primary: #d4af37;
-  --bg: #000;
-  --text: #fff;
 
-  --title-font: 'Playfair Display', serif;
-  --body-font: 'Montserrat', sans-serif;
-
-  --title-size: 3rem;
-  --text-size: 1rem;
+/* =========================
+   🎨 ESTILO GLOBAL
+   ========================= */
+:root{
+  --primary:#d4af37;
+  --bg:#000;
+  --text:#fff;
+  --title-font:'Playfair Display', serif;
+  --body-font:'Montserrat', sans-serif;
 }
 
-/* RESET */
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--body-font);
+body{
+  font-family:var(--body-font);
+  background:var(--bg);
+  color:var(--text);
   overflow-x:hidden;
 }
 
 /* =========================
-   🎬 BACKGROUND (VIDEO / IMG)
+   🎬 BACKGROUND
    ========================= */
-.background {
+.background{
   position:fixed;
   inset:0;
   z-index:-1;
@@ -45,120 +40,156 @@ body {
 }
 
 .background video,
-.background img {
+.background img{
   width:100%;
   height:100%;
   object-fit:cover;
+  filter:brightness(0.65);
 }
 
-.overlay {
+.overlay{
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,0.55);
+  background:rgba(0,0,0,0.4);
 }
 
 /* =========================
    HERO
    ========================= */
-.hero {
+.hero{
   height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  position:relative;
 }
 
-.hero-content {
-  z-index:2;
+.hero-content{
+  animation:fadeUp 1.8s ease;
 }
 
-h1 {
-  font-family: var(--title-font);
-  font-size: var(--title-size);
+/* 💎 NOMBRE LUJO PREMIUM */
+.luxury-name{
+  font-family:var(--title-font);
+  font-size:3.6rem;
+  letter-spacing:2px;
+
+  background:linear-gradient(90deg,#d4af37,#fff3b0,#d4af37);
+  background-size:200% auto;
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  animation:shine 3s linear infinite, fadeName 2s ease forwards;
+
+  opacity:0;
+  transform:translateY(20px);
 }
 
-p {
-  font-size: var(--text-size);
-  opacity:0.9;
+.subtitle{
   margin-top:10px;
+  opacity:0.9;
 }
 
 /* BOTONES */
-.btn {
-  margin-top:18px;
-  padding:12px 22px;
-  background: var(--primary);
+.btn{
+  margin-top:20px;
+  padding:12px 24px;
   border:none;
   border-radius:30px;
-  cursor:pointer;
+  background:var(--primary);
   font-weight:bold;
+  cursor:pointer;
 }
 
-/* SECCIONES */
-section {
+/* =========================
+   SECCIONES
+   ========================= */
+section{
   padding:60px 20px;
   text-align:center;
 }
 
-.box {
+.box{
   max-width:850px;
   margin:auto;
-  background:#151515;
+  background:#141414;
   padding:25px;
   border-radius:15px;
   margin-bottom:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* COUNTDOWN PRO */
-.countdown {
+/* =========================
+   COUNTDOWN PREMIUM
+   ========================= */
+.countdown{
   display:flex;
   justify-content:center;
-  gap:10px;
+  gap:12px;
   flex-wrap:wrap;
   margin-top:15px;
 }
 
-.time {
+.time{
   background:#1c1c1c;
   padding:15px;
   border-radius:12px;
-  min-width:80px;
+  min-width:85px;
 }
 
-.time span {
+.time span{
   display:block;
-  font-size:1.6rem;
+  font-size:1.7rem;
   color:var(--primary);
   font-weight:bold;
 }
 
-/* CARRUSEL */
-.carousel {
+/* =========================
+   CARRUSEL
+   ========================= */
+.carousel{
   overflow:hidden;
   border-radius:15px;
 }
 
-.slides {
+.slides{
   display:flex;
-  animation: slide 12s infinite;
+  animation:slide 12s infinite;
 }
 
-.slides img {
+.slides img{
   width:100%;
-  height:350px;
+  height:380px;
   object-fit:cover;
 }
 
-@keyframes slide {
-  0% {transform:translateX(0);}
-  33% {transform:translateX(-100%);}
-  66% {transform:translateX(-200%);}
-  100% {transform:translateX(0);}
+/* =========================
+   ANIMACIONES
+   ========================= */
+@keyframes shine{
+  0%{background-position:0%;}
+  100%{background-position:200%;}
 }
 
-/* LINKS */
-a.button {
+@keyframes fadeName{
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes slide{
+  0%{transform:translateX(0);}
+  33%{transform:translateX(-100%);}
+  66%{transform:translateX(-200%);}
+  100%{transform:translateX(0);}
+}
+
+/* BOTÓN LINK */
+a.button{
   display:inline-block;
   margin-top:15px;
   padding:12px 20px;
@@ -173,30 +204,33 @@ a.button {
 
 <body>
 
-<!-- ==================================================
-     🎬 BACKGROUND (EDITABLE: VIDEO O IMAGEN)
-     ================================================== -->
+<!-- =========================
+   🎬 BACKGROUND (EDITABLE)
+   ========================= -->
 <div class="background">
 
-  <!-- OPCIÓN 1: VIDEO -->
+  <!-- VIDEO (default) -->
   <video autoplay muted loop playsinline>
     <source src="fondo.mp4">
   </video>
 
- 
+  <!-- O IMAGEN (opcional)
+  <img src="fondo.jpg">
   -->
 
   <div class="overlay"></div>
 </div>
 
-<!-- HERO -->
+<!-- =========================
+   HERO
+   ========================= -->
 <div class="hero">
   <div class="hero-content">
-    <h1>Mis 15 Años</h1>
-    <p>Una noche inolvidable</p>
 
-    <button class="btn" onclick="scrollToSection()">Ver invitación</button>
+    <h1 id="name" class="luxury-name"></h1>
+    <p id="subtitle" class="subtitle"></p>
 
+    <button class="btn" onclick="scrollToInfo()">Ver invitación</button>
     <button class="btn" onclick="toggleMusic()">🎵 Música</button>
 
     <audio id="music">
@@ -205,7 +239,9 @@ a.button {
   </div>
 </div>
 
-<!-- CONTENIDO -->
+<!-- =========================
+   CONTENIDO
+   ========================= -->
 <section id="info">
 
 <!-- COUNTDOWN -->
@@ -223,13 +259,13 @@ a.button {
 <!-- UBICACIÓN -->
 <div class="box">
   <h2>📍 Ubicación</h2>
-  <a class="button" id="mapLink" target="_blank">Ver ubicación</a>
+  <a class="button" id="map" target="_blank">Ver ubicación</a>
 </div>
 
 <!-- WHATSAPP -->
 <div class="box">
   <h2>💬 Confirmación</h2>
-  <a class="button" id="waLink" target="_blank">Confirmar por WhatsApp</a>
+  <a class="button" id="wa" target="_blank">Confirmar asistencia</a>
 </div>
 
 <!-- GALERÍA -->
@@ -248,55 +284,58 @@ a.button {
 </section>
 
 <script>
-/* ==================================================
-   ⚙️ CONFIG CENTRAL (EDITAR SOLO AQUÍ)
-   ================================================== */
+
+/* =========================
+   ⚙️ CONFIG (EDITAR SOLO AQUÍ)
+   ========================= */
 const CONFIG = {
+  name:"Sofía",
+  subtitle:"Mis 15 años - Una noche inolvidable",
 
-  eventDate: "2026-12-20T20:00:00",
+  eventDate:"2026-12-20T20:00:00",
 
-  whatsapp: "59895090806",
+  whatsapp:"59899999999",
+  whatsappText:"Hola! Confirmo mi asistencia a los 15 años",
 
-  whatsappText: "Hola! Confirmo mi asistencia a los 15 años",
-
-  mapURL: "https://www.google.com/maps",
-
+  mapURL:"https://www.google.com/maps"
 };
 
 /* =========================
-   LINKS DINÁMICOS
+   INYECTAR DATOS
    ========================= */
-document.getElementById("waLink").href =
-  `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.whatsappText)}`;
+document.getElementById("name").innerText = CONFIG.name;
+document.getElementById("subtitle").innerText = CONFIG.subtitle;
 
-document.getElementById("mapLink").href = CONFIG.mapURL;
+document.getElementById("wa").href =
+`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.whatsappText)}`;
+
+document.getElementById("map").href = CONFIG.mapURL;
 
 /* =========================
    COUNTDOWN
    ========================= */
 const event = new Date(CONFIG.eventDate).getTime();
 
-setInterval(() => {
+setInterval(()=>{
   const now = new Date().getTime();
   const diff = event - now;
 
-  document.getElementById("d").innerText = Math.floor(diff/(1000*60*60*24));
-  document.getElementById("h").innerText = Math.floor((diff/(1000*60*60))%24);
-  document.getElementById("m").innerText = Math.floor((diff/(1000*60))%60);
-  document.getElementById("s").innerText = Math.floor((diff/1000)%60);
-
-}, 1000);
+  document.getElementById("d").innerText=Math.floor(diff/86400000);
+  document.getElementById("h").innerText=Math.floor((diff%86400000)/3600000);
+  document.getElementById("m").innerText=Math.floor((diff%3600000)/60000);
+  document.getElementById("s").innerText=Math.floor((diff%60000)/1000);
+},1000);
 
 /* =========================
    FUNCIONES
    ========================= */
-function scrollToSection(){
+function scrollToInfo(){
   document.getElementById("info").scrollIntoView({behavior:"smooth"});
 }
 
 function toggleMusic(){
-  const music = document.getElementById("music");
-  music.paused ? music.play() : music.pause();
+  const m=document.getElementById("music");
+  m.paused?m.play():m.pause();
 }
 </script>
 
