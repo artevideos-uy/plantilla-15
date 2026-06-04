@@ -1,166 +1,269 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mis 15 Años</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Invitación Premium</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+/* =========================
+   🎨 VARIABLES EDITABLES
+   ========================= */
+:root {
+  --color-principal: #d4af37;
+  --color-fondo: #0b0b0b;
+  --color-texto: #ffffff;
+  --overlay: rgba(0,0,0,0.6);
+}
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #0f0f0f;
-      color: white;
-      overflow-x: hidden;
-    }
+/* =========================
+   BASE
+   ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    /* PORTADA */
-    .hero {
-      height: 100vh;
-      background: url('principal.jpg') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-    }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  overflow-x: hidden;
+}
 
-    .overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.55);
-    }
+/* =========================
+   PORTADA PREMIUM
+   ========================= */
+.hero {
+  height: 100vh;
+  background: url('principal.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      animation: fadeIn 2s ease;
-    }
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay);
+}
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      letter-spacing: 2px;
-    }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 2s ease;
+}
 
-    p {
-      margin-top: 10px;
-      font-size: 1.2rem;
-    }
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  letter-spacing: 2px;
+}
 
-    .btn {
-      margin-top: 25px;
-      padding: 12px 25px;
-      border: none;
-      background: #d4af37;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 30px;
-      transition: 0.3s;
-    }
+p {
+  margin-top: 10px;
+  opacity: 0.9;
+}
 
-    .btn:hover {
-      transform: scale(1.05);
-    }
+.btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  background: var(--color-principal);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    /* SECCIÓN */
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
+.btn:hover {
+  transform: scale(1.05);
+}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 30px;
-    }
+/* =========================
+   SECCIONES
+   ========================= */
+section {
+  padding: 70px 20px;
+  text-align: center;
+}
 
-    .gallery img {
-      width: 100%;
-      border-radius: 12px;
-      transition: transform 0.3s;
-    }
+.box {
+  max-width: 700px;
+  margin: auto;
+  background: #151515;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
 
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
+/* =========================
+   COUNTDOWN
+   ========================= */
+.countdown {
+  font-size: 2rem;
+  color: var(--color-principal);
+  font-weight: bold;
+}
 
-    /* MÚSICA */
-    .music-control {
-      margin-top: 20px;
-    }
+/* =========================
+   BOTONES
+   ========================= */
+a.button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: var(--color-principal);
+  color: black;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+}
 
-    audio {
-      width: 100%;
-      max-width: 300px;
-    }
+/* =========================
+   GALERÍA
+   ========================= */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
 
-    /* ANIMACIÓN */
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+.gallery img {
+  width: 100%;
+  border-radius: 12px;
+  transition: 0.3s;
+}
 
-    /* FOOTER */
-    footer {
-      padding: 20px;
-      text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-  </style>
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   ANIMACIONES
+   ========================= */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* =========================
+   PARTÍCULAS (LUZ SUAVE)
+   ========================= */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--color-principal);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float 6s infinite linear;
+}
+
+@keyframes float {
+  from {transform: translateY(0);}
+  to {transform: translateY(-100vh);}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- PORTADA -->
-  <div class="hero">
-    <div class="overlay"></div>
+<!-- PARTÍCULAS -->
+<script>
+for (let i = 0; i < 40; i++) {
+  let p = document.createElement("div");
+  p.className = "particle";
+  p.style.left = Math.random() * 100 + "vw";
+  p.style.top = Math.random() * 100 + "vh";
+  p.style.animationDuration = (3 + Math.random() * 5) + "s";
+  document.body.appendChild(p);
+}
+</script>
 
-    <div class="hero-content">
-      <h1>Mis 15 Años</h1>
-      <p>Una noche única, un momento inolvidable</p>
+<!-- PORTADA -->
+<div class="hero">
+  <div class="overlay"></div>
 
-      <button class="btn" onclick="document.getElementById('contenido').scrollIntoView({behavior:'smooth'})">
-        Ver invitación
-      </button>
+  <div class="hero-content">
+    <h1>Mis 15 Años</h1>
+    <p>Una noche única e inolvidable</p>
 
-      <div class="music-control">
-        <p style="margin-top:15px;">Música de fondo</p>
-        <audio controls>
-          <source src="musica.mp3" type="audio/mpeg">
-          Tu navegador no soporta audio.
-        </audio>
-      </div>
+    <button class="btn" onclick="document.getElementById('info').scrollIntoView({behavior:'smooth'})">
+      Ver invitación
+    </button>
+  </div>
+</div>
+
+<!-- CONTENIDO -->
+<section id="info">
+
+  <!-- COUNTDOWN -->
+  <div class="box">
+    <h2>⏳ Falta poco</h2>
+    <div class="countdown" id="countdown"></div>
+  </div>
+
+  <!-- UBICACIÓN -->
+  <div class="box">
+    <h2>📍 Ubicación</h2>
+    <p>Salón de eventos</p>
+
+    <!-- EDITAR LINK -->
+    <a class="button" href="#" target="_blank">Ver en Google Maps</a>
+  </div>
+
+  <!-- WHATSAPP -->
+  <div class="box">
+    <h2>💬 Confirmación</h2>
+    <p>Confirma tu asistencia</p>
+
+    <!-- EDITAR NÚMERO -->
+    <a class="button"
+       href="https://wa.me/59899999999?text=Confirmo%20mi%20asistencia"
+       target="_blank">
+      Confirmar por WhatsApp
+    </a>
+  </div>
+
+  <!-- GALERÍA -->
+  <div class="box">
+    <h2>📸 Recuerdos</h2>
+    <div class="gallery">
+      <img src="foto1.png">
+      <img src="foto2.jpg">
     </div>
   </div>
 
-  <!-- CONTENIDO -->
-  <section id="contenido">
-    <h2>Te invito a celebrar conmigo</h2>
-    <p>Será una noche especial llena de alegría, emoción y recuerdos inolvidables.</p>
+</section>
 
-    <div class="gallery">
-      <img src="foto1.png" alt="foto 1">
-      <img src="foto2.jpg" alt="foto 2">
-      <img src="principal.jpg" alt="foto principal">
-    </div>
-  </section>
+<!-- COUNTDOWN SCRIPT -->
+<script>
+const eventDate = new Date("2026-12-20T20:00:00").getTime();
 
-  <footer>
-    Hecho con ❤️ para un momento inolvidable
-  </footer>
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = eventDate - now;
+
+  const d = Math.floor(diff / (1000*60*60*24));
+  const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const m = Math.floor((diff%(1000*60*60))/(1000*60));
+  const s = Math.floor((diff%(1000*60))/1000);
+
+  document.getElementById("countdown").innerHTML =
+    `${d}d ${h}h ${m}m ${s}s`;
+
+}, 1000);
+</script>
 
 </body>
 </html>
