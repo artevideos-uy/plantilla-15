@@ -9,50 +9,22 @@
 
 <style>
 :root {
-  --color-principal: #d4af37;
-  --color-fondo: #000;
-  --overlay: rgba(0,0,0,0.55);
+  --gold: #d4af37;
+  --bg: #0b0b0b;
 }
 
-/* ===== BASE ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
   font-family:'Montserrat', sans-serif;
-  background: var(--color-fondo);
+  background:var(--bg);
   color:white;
-  overflow-x:hidden;
-}
-
-/* ===== FONDO DINÁMICO ===== */
-.background {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:-1;
-  overflow:hidden;
-}
-
-/* VIDEO FONDO */
-.background video {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* OVERLAY */
-.overlay {
-  position:absolute;
-  width:100%;
-  height:100%;
-  background: var(--overlay);
 }
 
 /* ===== HERO ===== */
 .hero {
   height:100vh;
+  background:url('principal.jpg') center/cover no-repeat;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -60,9 +32,16 @@ body {
   position:relative;
 }
 
+.overlay {
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+}
+
 .hero-content {
+  position:relative;
   z-index:2;
-  animation: fadeIn 2s ease;
 }
 
 h1 {
@@ -71,13 +50,13 @@ h1 {
 }
 
 .btn {
-  margin-top:20px;
-  padding:12px 25px;
-  background: var(--color-principal);
+  margin-top:15px;
+  padding:12px 22px;
+  background:var(--gold);
   border:none;
   border-radius:30px;
-  font-weight:bold;
   cursor:pointer;
+  font-weight:bold;
 }
 
 /* ===== SECCIONES ===== */
@@ -89,45 +68,59 @@ section {
 .box {
   max-width:800px;
   margin:auto;
-  background:#141414;
+  background:#151515;
   padding:25px;
   border-radius:15px;
   margin-bottom:25px;
 }
 
-/* ===== CARRUSEL ===== */
+/* ===== COUNTDOWN PRO ===== */
+.countdown {
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+
+.time-box {
+  background:#1f1f1f;
+  padding:15px;
+  border-radius:12px;
+  min-width:80px;
+}
+
+.time-box span {
+  display:block;
+  font-size:1.5rem;
+  color:var(--gold);
+  font-weight:bold;
+}
+
+/* ===== CARRUSEL FIX ===== */
 .carousel {
   width:100%;
-  max-width:700px;
-  margin:auto;
   overflow:hidden;
   border-radius:15px;
-  position:relative;
 }
 
 .slides {
   display:flex;
-  width:300%;
   animation: slide 12s infinite;
 }
 
 .slides img {
   width:100%;
+  height:350px;
+  object-fit:cover; /* 🔥 FIX ZOOM */
   flex-shrink:0;
 }
 
 @keyframes slide {
-  0% {transform:translateX(0);}
-  33% {transform:translateX(-100%);}
-  66% {transform:translateX(-200%);}
-  100% {transform:translateX(0);}
-}
-
-/* ===== COUNTDOWN ===== */
-.countdown {
-  font-size:2rem;
-  color:var(--color-principal);
-  font-weight:bold;
+  0%{transform:translateX(0);}
+  33%{transform:translateX(-100%);}
+  66%{transform:translateX(-200%);}
+  100%{transform:translateX(0);}
 }
 
 /* ===== BOTONES ===== */
@@ -135,118 +128,115 @@ a.button {
   display:inline-block;
   margin-top:15px;
   padding:12px 20px;
-  background:var(--color-principal);
+  background:var(--gold);
   color:black;
-  text-decoration:none;
   border-radius:30px;
+  text-decoration:none;
   font-weight:bold;
 }
 
-/* ===== ANIMACIÓN ===== */
-@keyframes fadeIn {
-  from {opacity:0; transform:translateY(20px);}
-  to {opacity:1; transform:translateY(0);}
+/* ===== MÚSICA ===== */
+.music-btn {
+  margin-top:15px;
+  background:#222;
+  color:white;
+  padding:10px 15px;
+  border-radius:20px;
+  border:1px solid var(--gold);
+  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     🔥 FONDO (EDITABLE)
-     ========================= -->
-
-<div class="background">
-
-  <!-- OPCIÓN 1: VIDEO (ACTIVADO POR DEFECTO) -->
-  <video autoplay muted loop playsinline>
-    <source src="fondo.mp4" type="video/mp4">
-  </video>
-
-  <!-- OPCIÓN 2: IMAGEN (si no usas video, BORRAS el <video> y dejas esto)
-  <img src="fondo.jpg" style="width:100%;height:100%;object-fit:cover;">
-  -->
-
-  <div class="overlay"></div>
-</div>
-
-<!-- =========================
-     PORTADA
-     ========================= -->
+<!-- HERO -->
 <div class="hero">
+  <div class="overlay"></div>
+
   <div class="hero-content">
     <h1>Mis 15 Años</h1>
-    <p>Una noche única e inolvidable</p>
+    <p>Una noche inolvidable</p>
 
-    <button class="btn" onclick="document.getElementById('info').scrollIntoView({behavior:'smooth'})">
-      Ver invitación
-    </button>
+    <button class="btn" onclick="scrollToInfo()">Ver invitación</button>
+
+    <!-- 🎵 MÚSICA CONTROLADA -->
+    <button class="music-btn" onclick="toggleMusic()">🎵 Reproducir música</button>
+
+    <audio id="music">
+      <source src="musica.mp3" type="audio/mpeg">
+    </audio>
   </div>
 </div>
 
-<!-- =========================
-     CONTENIDO
-     ========================= -->
+<!-- CONTENIDO -->
 <section id="info">
 
-  <!-- COUNTDOWN -->
-  <div class="box">
-    <h2>⏳ Falta poco</h2>
-    <div class="countdown" id="countdown"></div>
+<!-- COUNTDOWN BONITO -->
+<div class="box">
+  <h2>⏳ Cuenta regresiva</h2>
+
+  <div class="countdown">
+    <div class="time-box"><span id="days">0</span>Días</div>
+    <div class="time-box"><span id="hours">0</span>Horas</div>
+    <div class="time-box"><span id="minutes">0</span>Min</div>
+    <div class="time-box"><span id="seconds">0</span>Seg</div>
   </div>
+</div>
 
-  <!-- UBICACIÓN -->
-  <div class="box">
-    <h2>📍 Ubicación</h2>
-    <a class="button" href="#" target="_blank">Ver en Google Maps</a>
-  </div>
+<!-- UBICACIÓN -->
+<div class="box">
+  <h2>📍 Ubicación</h2>
+  <a class="button" href="#" target="_blank">Ver en Google Maps</a>
+</div>
 
-  <!-- WHATSAPP -->
-  <div class="box">
-    <h2>💬 Confirmación</h2>
-    <a class="button"
-       href="https://wa.me/59895090806?text=Confirmo%20mi%20asistencia"
-       target="_blank">
-      Confirmar por WhatsApp
-    </a>
-  </div>
+<!-- CARRUSEL -->
+<div class="box">
+  <h2>📸 Galería</h2>
 
-  <!-- =========================
-       CARRUSEL
-       ========================= -->
-  <div class="box">
-    <h2>📸 Galería</h2>
-
-    <div class="carousel">
-      <div class="slides">
-        <img src="foto1.png">
-        <img src="foto2.jpg">
-        <img src="principal.jpg">
-      </div>
+  <div class="carousel">
+    <div class="slides">
+      <img src="foto1.png">
+      <img src="foto2.jpg">
+      <img src="principal.jpg">
     </div>
   </div>
+</div>
 
 </section>
 
-<!-- =========================
-     COUNTDOWN SCRIPT
-     ========================= -->
 <script>
+
+/* ===== SCROLL ===== */
+function scrollToInfo(){
+  document.getElementById("info").scrollIntoView({behavior:"smooth"});
+}
+
+/* ===== MÚSICA FIX ===== */
+function toggleMusic(){
+  const music = document.getElementById("music");
+
+  if(music.paused){
+    music.play();
+  } else {
+    music.pause();
+  }
+}
+
+/* ===== COUNTDOWN ===== */
 const eventDate = new Date("2026-12-20T20:00:00").getTime();
 
 setInterval(() => {
   const now = new Date().getTime();
   const diff = eventDate - now;
 
-  const d = Math.floor(diff/(1000*60*60*24));
-  const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  const m = Math.floor((diff%(1000*60*60))/(1000*60));
-  const s = Math.floor((diff%(1000*60))/1000);
-
-  document.getElementById("countdown").innerHTML =
-    `${d}d ${h}h ${m}m ${s}s`;
+  document.getElementById("days").innerText = Math.floor(diff/(1000*60*60*24));
+  document.getElementById("hours").innerText = Math.floor((diff/(1000*60*60))%24);
+  document.getElementById("minutes").innerText = Math.floor((diff/1000/60)%60);
+  document.getElementById("seconds").innerText = Math.floor((diff/1000)%60);
 
 }, 1000);
+
 </script>
 
 </body>
