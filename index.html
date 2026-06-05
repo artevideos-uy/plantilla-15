@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Invitación Premium</title>
+<title>Invitación Sofía - 15 años</title>
 
-<!-- 🔤 LIBRERÍA DE FUENTES -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;500&family=Great+Vibes&family=Cinzel:wght@400;600&family=Dancing+Script:wght@400;700&family=Allura&family=Parisienne&family=Alex+Brush&family=Italiana&display=swap" rel="stylesheet">
+<!-- 💎 TIPOGRAFÍAS -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 
@@ -14,11 +14,15 @@
   --primary:#d4af37;
   --bg:#000;
   --text:#fff;
-  --title-font:'Playfair Display', serif;
+  --title-font:'Dancing Script', cursive;
   --body-font:'Montserrat', sans-serif;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
   font-family:var(--body-font);
@@ -39,7 +43,7 @@ body{
   width:100%;
   height:100%;
   object-fit:cover;
-  filter:brightness(0.65);
+  filter:brightness(0.6);
 }
 
 .overlay{
@@ -61,28 +65,27 @@ body{
   animation:fadeUp 1.5s ease;
 }
 
-/* NOMBRE LUJO */
+/* 💎 NOMBRE */
 .luxury-name{
   font-family:var(--title-font);
-  font-size:3.6rem;
-  background:linear-gradient(90deg,#d4af37,#fff3b0,#d4af37);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:shine 3s infinite linear, fadeName 1.5s ease forwards;
-  opacity:0;
+  font-size:4rem;
+  color:#fff;
+  text-shadow:0 0 20px rgba(212,175,55,0.4);
 }
 
-/* SUBTÍTULOS */
+/* 💎 MIS 15 AÑOS */
 .main-title{
   font-family:var(--title-font);
-  font-size:1.4rem;
+  font-size:2rem;
   margin-top:10px;
+  color:var(--primary);
 }
 
+/* SUBTÍTULO */
 .subtitle{
   font-family:var(--body-font);
+  margin-top:8px;
   opacity:0.9;
-  margin-top:5px;
 }
 
 /* BOTONES */
@@ -92,11 +95,12 @@ body{
   border:none;
   border-radius:30px;
   background:var(--primary);
+  color:#000;
   font-weight:bold;
   cursor:pointer;
 }
 
-/* ================= SECCIONES ================= */
+/* SECCIONES */
 section{
   padding:60px 20px;
   text-align:center;
@@ -117,7 +121,6 @@ section{
   justify-content:center;
   gap:12px;
   flex-wrap:wrap;
-  margin-top:15px;
 }
 
 .time{
@@ -130,8 +133,8 @@ section{
 .time span{
   font-size:1.6rem;
   color:var(--primary);
-  font-weight:bold;
   display:block;
+  font-weight:bold;
 }
 
 /* CARRUSEL */
@@ -151,63 +154,7 @@ section{
   object-fit:cover;
 }
 
-/* ================= CATÁLOGO FUENTES ================= */
-.font-catalog{
-  position:fixed;
-  top:10px;
-  right:10px;
-  width:220px;
-  max-height:90vh;
-  overflow:auto;
-  background:#111;
-  padding:10px;
-  border-radius:12px;
-  z-index:9999;
-  box-shadow:0 10px 30px rgba(0,0,0,0.6);
-}
-
-.font-item{
-  padding:10px;
-  margin-bottom:10px;
-  background:#1c1c1c;
-  border-radius:10px;
-  cursor:pointer;
-  transition:0.2s;
-}
-
-.font-item:hover{
-  transform:scale(1.03);
-  background:#222;
-}
-
-.font-preview{
-  font-size:1.2rem;
-  color:var(--primary);
-}
-
-/* ANIMACIONES */
-@keyframes shine{
-  0%{background-position:0%;}
-  100%{background-position:200%;}
-}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes fadeName{
-  to{opacity:1;}
-}
-
-@keyframes slide{
-  0%{transform:translateX(0);}
-  33%{transform:translateX(-100%);}
-  66%{transform:translateX(-200%);}
-  100%{transform:translateX(0);}
-}
-
-/* LINKS */
+/* BOTÓN LINK */
 a.button{
   display:inline-block;
   margin-top:15px;
@@ -218,62 +165,26 @@ a.button{
   text-decoration:none;
   font-weight:bold;
 }
+
+/* ANIMACIONES */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes slide{
+  0%{transform:translateX(0);}
+  33%{transform:translateX(-100%);}
+  66%{transform:translateX(-200%);}
+  100%{transform:translateX(0);}
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- 🎨 CATÁLOGO VISUAL DE FUENTES -->
-<div class="font-catalog">
-
-  <div class="font-item" onclick="setFont('playfair')" style="font-family:'Playfair Display'">
-    <div class="font-preview">Sofía</div>
-    Elegante
-  </div>
-
-  <div class="font-item" onclick="setFont('greatvibes')" style="font-family:'Great Vibes'">
-    <div class="font-preview">Sofía</div>
-    Firma Luxury
-  </div>
-
-  <div class="font-item" onclick="setFont('dancing')" style="font-family:'Dancing Script'">
-    <div class="font-preview">Sofía</div>
-    Dancing Script
-  </div>
-
-  <div class="font-item" onclick="setFont('allura')" style="font-family:'Allura'">
-    <div class="font-preview">Sofía</div>
-    Allura
-  </div>
-
-  <div class="font-item" onclick="setFont('parisienne')" style="font-family:'Parisienne'">
-    <div class="font-preview">Sofía</div>
-    Parisienne
-  </div>
-
-  <div class="font-item" onclick="setFont('alexbrush')" style="font-family:'Alex Brush'">
-    <div class="font-preview">Sofía</div>
-    Alex Brush
-  </div>
-
-  <div class="font-item" onclick="setFont('cinzel')" style="font-family:'Cinzel'">
-    <div class="font-preview">Sofía</div>
-    Royal
-  </div>
-
-  <div class="font-item" onclick="setFont('italiana')" style="font-family:'Italiana'">
-    <div class="font-preview">Sofía</div>
-    Minimal
-  </div>
-
-  <div class="font-item" onclick="setFont('montserrat')" style="font-family:'Montserrat'">
-    <div class="font-preview">Sofía</div>
-    Clean
-  </div>
-
-</div>
-
-<!-- 🎬 BACKGROUND -->
+<!-- 🎬 FONDO -->
 <div class="background">
   <video autoplay muted loop playsinline>
     <source src="fondo.mp4">
@@ -288,7 +199,7 @@ a.button{
     <h1 id="name" class="luxury-name"></h1>
 
     <div class="main-title">Mis 15 años</div>
-    <div class="subtitle" id="subtitle"></div>
+    <div class="subtitle">Una noche inolvidable</div>
 
     <button class="btn" onclick="scrollToInfo()">Ver invitación</button>
     <button class="btn" onclick="toggleMusic()">🎵 Música</button>
@@ -306,25 +217,29 @@ a.button{
 <div class="box">
   <h2>⏳ Cuenta regresiva</h2>
   <div class="countdown">
-    <div class="time"><span id="d">0</span>Días</div>
-    <div class="time"><span id="h">0</span>Horas</div>
-    <div class="time"><span id="m">0</span>Min</div>
-    <div class="time"><span id="s">0</span>Seg</div>
+    <div class="time"><span id="d"></span>Días</div>
+    <div class="time"><span id="h"></span>Horas</div>
+    <div class="time"><span id="m"></span>Min</div>
+    <div class="time"><span id="s"></span>Seg</div>
   </div>
 </div>
 
 <div class="box">
   <h2>📍 Ubicación</h2>
-  <a class="button" id="map" target="_blank">Ver ubicación</a>
+  <a class="button" href="https://www.google.com/maps" target="_blank">Ver ubicación</a>
 </div>
 
 <div class="box">
   <h2>💬 Confirmación</h2>
-  <a class="button" id="wa" target="_blank">Confirmar asistencia</a>
+  <a class="button"
+     href="https://wa.me/59895090806?text=Hola! Confirmo mi asistencia"
+     target="_blank">
+     Confirmar asistencia
+  </a>
 </div>
 
 <div class="box">
-  <h2>📸 Galería</h2>
+  <h2>📸 Mi álbum de recuerdos</h2>
   <div class="carousel">
     <div class="slides">
       <img src="foto1.png">
@@ -341,21 +256,11 @@ a.button{
 /* ⚙️ CONFIG */
 const CONFIG = {
   name:"Sofía",
-  subtitle:"Una noche inolvidable",
-  eventDate:"2026-12-20T20:00:00",
-  whatsapp:"59899999999",
-  whatsappText:"Hola! Confirmo mi asistencia",
-  mapURL:"https://www.google.com/maps"
+  eventDate:"2026-12-20T20:00:00"
 };
 
 /* INYECTAR */
 document.getElementById("name").innerText = CONFIG.name;
-document.getElementById("subtitle").innerText = CONFIG.subtitle;
-
-document.getElementById("wa").href =
-`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.whatsappText)}`;
-
-document.getElementById("map").href = CONFIG.mapURL;
 
 /* COUNTDOWN */
 const event = new Date(CONFIG.eventDate).getTime();
@@ -370,33 +275,15 @@ setInterval(()=>{
   document.getElementById("s").innerText=Math.floor((diff%60000)/1000);
 },1000);
 
-/* MUSICA */
+/* MÚSICA */
 function toggleMusic(){
   const m=document.getElementById("music");
-  m.paused?m.play():m.pause();
+  m.paused ? m.play() : m.pause();
 }
 
 /* SCROLL */
 function scrollToInfo(){
   document.getElementById("info").scrollIntoView({behavior:"smooth"});
-}
-
-/* FUENTES */
-function setFont(type){
-
-  const fonts = {
-    playfair:"'Playfair Display', serif",
-    greatvibes:"'Great Vibes', cursive",
-    dancing:"'Dancing Script', cursive",
-    allura:"'Allura', cursive",
-    parisienne:"'Parisienne', cursive",
-    alexbrush:"'Alex Brush', cursive",
-    cinzel:"'Cinzel', serif",
-    italiana:"'Italiana', serif",
-    montserrat:"'Montserrat', sans-serif"
-  };
-
-  document.documentElement.style.setProperty('--title-font', fonts[type]);
 }
 
 </script>
